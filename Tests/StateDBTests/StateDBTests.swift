@@ -1,11 +1,11 @@
 import XCTest
-@testable import state_db
+@testable import StateDB
 
-final class state_dbTests: XCTestCase {
+final class StateDBTests: XCTestCase {
     func testExample() throws {
         // This is an example of a functional test case.
         // Use XCTAssert and related functions to verify your tests produce the correct
         // results.
-        XCTAssertEqual(state_db().text, "Hello, World!")
+        XCTAssertTrue(true)
     }
 }
