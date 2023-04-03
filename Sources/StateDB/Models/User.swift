@@ -26,6 +26,9 @@ public final class User: Model, Content {
   
   @Field(key: "location")
   public var location: Location
+
+  @Field(key: "device_ids")
+  public var deviceIds: [String]
   
   @Children(for: \.$id.$user)
   public var threadMemberships: [ThreadMembership]
@@ -54,14 +57,14 @@ public final class User: Model, Content {
   
   public init() { }
   
-  
   public init(
     id: UUID,
     name: String,
     handle: String,
     profileImageUrl: String,
     location: Location,
-    stytch: Stytch
+    stytch: Stytch,
+    deviceIds: [String] = []
   ) {
     self.id = id
     self.name = name
@@ -69,6 +72,7 @@ public final class User: Model, Content {
     self.profileImageUrl = profileImageUrl
     self.location = location
     self.stytch = stytch
+    self.deviceIds = deviceIds
   }
   
   public struct Location: Codable {

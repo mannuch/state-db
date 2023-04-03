@@ -15,6 +15,9 @@ public final class Thread: Model, Content {
   
   @ID(custom: .id, generatedBy: .user)
   public var id: String?
+
+  @OptionalField(key: "thread_content")
+  public var threadContent: Data?
   
   @Children(for: \.$id.$thread)
   public var threadMemberships: [ThreadMembership]
@@ -29,9 +32,11 @@ public final class Thread: Model, Content {
   
   public init(
     id: ULID,
-    friendLinkId: FriendLink.IDValue? = nil
+    friendLinkId: FriendLink.IDValue? = nil,
+    threadContent: Data? = nil
   ) {
     self.id = id.ulidString
+    self.threadContent = threadContent
     self.$friendLink.id = friendLinkId
   }
 }
