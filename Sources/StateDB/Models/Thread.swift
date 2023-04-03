@@ -11,35 +11,35 @@ import Foundation
 import ULID
 
 public final class Thread: Model, Content {
-    public static let schema = "threads"
-    
-    @ID(custom: .id, generatedBy: .user)
-    public var id: String?
-    
-    @Children(for: \.$id.$thread)
-    public var threadMemberships: [ThreadMembership]
-    
-    @Siblings(through: ThreadMembership.self, from: \.$id.$thread, to: \.$id.$user)
-    public var users: [User]
-    
-    @OptionalParent(key: "friend_link_id")
-    public var friendLink: FriendLink?
-    
-    public init() { }
-    
-    public init(
-        id: ULID,
-        friendLinkId: FriendLink.IDValue? = nil
-    ) {
-        self.id = id.ulidString
-        self.$friendLink.id = friendLinkId
-    }
+  public static let schema = "threads"
+  
+  @ID(custom: .id, generatedBy: .user)
+  public var id: String?
+  
+  @Children(for: \.$id.$thread)
+  public var threadMemberships: [ThreadMembership]
+  
+  @Siblings(through: ThreadMembership.self, from: \.$id.$thread, to: \.$id.$user)
+  public var users: [User]
+  
+  @OptionalParent(key: "friend_link_id")
+  public var friendLink: FriendLink?
+  
+  public init() { }
+  
+  public init(
+    id: ULID,
+    friendLinkId: FriendLink.IDValue? = nil
+  ) {
+    self.id = id.ulidString
+    self.$friendLink.id = friendLinkId
+  }
 }
 
 public extension Thread {
-    
-    /// Like `self.requireID()`, except returns as `ULID`.
-    func requireULID() throws -> ULID {
-        ULID(ulidString: try self.requireID())!
-    }
+  
+  /// Like `self.requireID()`, except returns as `ULID`.
+  func requireULID() throws -> ULID {
+    ULID(ulidString: try self.requireID())!
+  }
 }
