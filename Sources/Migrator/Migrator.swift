@@ -71,6 +71,7 @@ final class Application {
   }
   
   deinit {
+    databases.shutdown()
     try? threadPool.syncShutdownGracefully()
     try? eventLoopGroup.syncShutdownGracefully()
   }
