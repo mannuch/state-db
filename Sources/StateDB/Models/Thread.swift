@@ -17,7 +17,7 @@ public final class Thread: Model, Content {
   public var id: String?
 
   @OptionalField(key: "thread_content")
-  var threadContent: Data?
+  public var threadContent: Data?
   
   @Children(for: \.$id.$thread)
   public var threadMemberships: [ThreadMembership]
