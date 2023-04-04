@@ -16,9 +16,6 @@ public final class Thread: Model, Content {
   @ID(custom: .id, generatedBy: .user)
   public var id: String?
 
-  @Timestamp(key: "updated_at", on: .update)
-  public var updatedAt: Date?
-
   @OptionalField(key: "thread_content")
   public var threadContent: Data?
   
