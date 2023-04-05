@@ -27,8 +27,8 @@ public final class User: Model, Content {
   @Field(key: "location")
   public var location: Location
 
-  @Field(key: "device_ids")
-  public var deviceIds: [String]
+  @Field(key: "device_tokens")
+  public var deviceTokens: [String]
   
   @Children(for: \.$id.$user)
   public var threadMemberships: [ThreadMembership]
@@ -64,7 +64,7 @@ public final class User: Model, Content {
     profileImageUrl: String,
     location: Location,
     stytch: Stytch,
-    deviceIds: [String] = []
+    deviceTokens: [String] = []
   ) {
     self.id = id
     self.name = name
@@ -72,7 +72,7 @@ public final class User: Model, Content {
     self.profileImageUrl = profileImageUrl
     self.location = location
     self.stytch = stytch
-    self.deviceIds = deviceIds
+    self.deviceTokens = deviceTokens
   }
   
   public struct Location: Codable {

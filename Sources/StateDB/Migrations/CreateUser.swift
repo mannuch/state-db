@@ -16,7 +16,7 @@ struct CreateUser: AsyncMigration {
       .field("handle", .string, .required)
       .field("profile_image_url", .string, .required)
       .field("location", .dictionary, .required)
-      .field("device_ids", .array(of: .string), .required)
+      .field("device_tokens", .array(of: .string), .required)
       .field("stytch_user_id", .string, .required)
       .unique(on: "stytch_user_id")
       .unique(on: "handle")
