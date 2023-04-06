@@ -5,8 +5,7 @@
 //  Created by Matthew Mannucci on 9/3/22.
 //
 
-import Fluent
-import FluentSQL
+import FluentKit
 
 struct CreateThread: AsyncMigration {
   func prepare(on database: Database) async throws {

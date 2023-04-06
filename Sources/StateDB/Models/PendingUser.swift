@@ -5,10 +5,10 @@
 //  Created by Matthew Mannucci on 3/17/23.
 //
 
-import Fluent
-import Vapor
+import FluentKit
+import Foundation
 
-public final class PendingUser: Model, Content {
+public final class PendingUser: Model {
   public static let schema = "pending_users"
   
   @ID(custom: .id, generatedBy: .user)
