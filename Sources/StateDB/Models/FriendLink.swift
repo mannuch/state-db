@@ -5,11 +5,10 @@
 //  Created by Matthew Mannucci on 9/3/22.
 //
 
-import Fluent
-import Vapor
+import FluentKit
 import Foundation
 
-public final class FriendLink: Model, Content {
+public final class FriendLink: Model {
   public static let schema = "friend_links"
   
   @ID(key: .id)

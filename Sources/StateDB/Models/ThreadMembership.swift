@@ -6,12 +6,11 @@
 //
 
 import Foundation
-import Fluent
-import Vapor
+import FluentKit
 
 /// See https://github.com/vapor/fluent-kit/blob/main/Tests/FluentKitTests/CompositeIDTests.swift for how to use composite (multi-column) primary keys in context of pivot tables.
 
-public final class ThreadMembership: Model, Content {
+public final class ThreadMembership: Model {
   public static let schema = "thread_memberships"
   
   @CompositeID
@@ -31,7 +30,7 @@ public final class ThreadMembership: Model, Content {
     try self.init(id: IDValue(user: user, thread: thread))
   }
   
-  public final class IDValue: Fields, Hashable, Content {
+  public final class IDValue: Fields, Hashable {
     
     @Parent(key: "user_id")
     public var user: User

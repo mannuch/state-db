@@ -7,7 +7,7 @@
 
 import Foundation
 import ConsoleKit
-import Fluent
+import FluentKit
 import FluentMySQLDriver
 import StateDB
 import NIO

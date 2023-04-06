@@ -5,8 +5,7 @@
 //  Created by Matthew Mannucci on 3/17/23.
 //
 
-import Fluent
-import FluentSQL
+import FluentKit
 
 struct CreatePendingUser: AsyncMigration {
   func prepare(on database: Database) async throws {

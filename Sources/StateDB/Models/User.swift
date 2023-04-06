@@ -5,11 +5,10 @@
 //  Created by Matthew Mannucci on 9/3/22.
 //
 
-import Fluent
-import Vapor
-import OrderedCollections
+import Foundation
+import FluentKit
 
-public final class User: Model, Content {
+public final class User: Model {
   public static let schema = "users"
   
   @ID(custom: .id, generatedBy: .user)

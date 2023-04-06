@@ -5,7 +5,7 @@
 //  Created by Matthew Mannucci on 4/2/23.
 //
 
-import Fluent
+import FluentKit
 
 public enum DBMigrations {
   

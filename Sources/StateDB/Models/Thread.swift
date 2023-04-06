@@ -5,12 +5,11 @@
 //  Created by Matthew Mannucci on 9/3/22.
 //
 
-import Fluent
-import Vapor
+import FluentKit
 import Foundation
 import ULID
 
-public final class Thread: Model, Content {
+public final class Thread: Model {
   public static let schema = "threads"
   
   @ID(custom: .id, generatedBy: .user)
