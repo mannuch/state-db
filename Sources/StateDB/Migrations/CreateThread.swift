@@ -12,6 +12,7 @@ struct CreateThread: AsyncMigration {
     try await database.schema(Thread.schema)
       .field("id", .string, .identifier(auto: false))
       .field("thread_content", .data)
+      .field("last_content_write_at", .datetime)
       .field("friend_link_id", .uuid)
       .unique(on: "friend_link_id")
       .create()
