@@ -18,6 +18,9 @@ public final class Thread: Model {
   @OptionalField(key: "thread_content")
   public var threadContent: Data?
   
+  @OptionalField(key: "last_content_write_at")
+  public var lastContentWriteAt: Date?
+  
   @Children(for: \.$id.$thread)
   public var threadMemberships: [ThreadMembership]
   
@@ -32,10 +35,12 @@ public final class Thread: Model {
   public init(
     id: ULID,
     friendLinkId: FriendLink.IDValue? = nil,
-    threadContent: Data? = nil
+    threadContent: Data? = nil,
+    lastContentWriteAt: Date? = nil
   ) {
     self.id = id.ulidString
     self.threadContent = threadContent
+    self.lastContentWriteAt = lastContentWriteAt
     self.$friendLink.id = friendLinkId
   }
 }
