@@ -9,6 +9,8 @@ import FluentKit
 import Foundation
 import ULID
 
+let SECS_PER_DAY: TimeInterval = 86400
+
 public final class Thread: Model {
   public static let schema = "threads"
   
@@ -50,5 +52,22 @@ public extension Thread {
   /// Like `self.requireID()`, except returns as `ULID`.
   func requireULID() throws -> ULID {
     ULID(ulidString: try self.requireID())!
+  }
+}
+
+public extension Thread {
+  /// Returns `threadContent` if `lastContentWriteAt` occurred less than 24 hours ago.
+  /// Else, returns `nil`.
+  var checkedThreadContent: Data? {
+    self.lastContentWriteAt.flatMap { lastContentWriteAt in
+      if lastContentWriteAt.is24HoursAgo { return nil }
+      return self.threadContent
+    }
+  }
+}
+
+extension Date {
+  var is24HoursAgo: Bool {
+    self < Date(timeIntervalSinceNow: -SECS_PER_DAY)
   }
 }
