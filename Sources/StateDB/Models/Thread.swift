@@ -56,6 +56,8 @@ public extension Thread {
 }
 
 public extension Thread {
+  /// Returns `threadContent` if `lastContentWriteAt` occurred less than 24 hours ago.
+  /// Else, returns `nil`.
   var checkedThreadContent: Data? {
     self.lastContentWriteAt.flatMap { lastContentWriteAt in
       if lastContentWriteAt.is24HoursAgo { return nil }
