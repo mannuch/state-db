@@ -85,9 +85,6 @@ struct MigrateCommand: Command {
     @Flag(name: "revert", help: "Reverts the migration.")
     var revert: Bool
     
-    @Flag(name: "autoConfirm", help: "Bypasses confirmation of migration and reversion.")
-    var autoConfirm: Bool
-    
     init() {}
   }
   
@@ -148,16 +145,11 @@ struct MigrateCommand: Command {
       try self.app.migrator.revertLastBatch().wait()
     }
     
-    if signature.autoConfirm {
-      // Skipping confirmation
+    if context.console.confirm("Would you like to continue?".consoleText(.warning)) {
       try revertBatch()
+      context.console.print("Migration successful")
     } else {
-      if context.console.confirm("Would you like to continue?".consoleText(.warning)) {
-        try revertBatch()
-        context.console.print("Migration successful")
-      } else {
-        context.console.warning("Migration cancelled")
-      }
+      context.console.warning("Migration cancelled")
     }
   }
   
@@ -179,16 +171,11 @@ struct MigrateCommand: Command {
       try self.app.migrator.prepareBatch().wait()
     }
     
-    if signature.autoConfirm {
-      // Skipping confirmation
+    if context.console.confirm("Would you like to continue?".consoleText(.warning)) {
       try prepareBatch()
+      context.console.print("Migration successful")
     } else {
-      if context.console.confirm("Would you like to continue?".consoleText(.warning)) {
-        try prepareBatch()
-        context.console.print("Migration successful")
-      } else {
-        context.console.warning("Migration cancelled")
-      }
+      context.console.warning("Migration cancelled")
     }
   }
   
