@@ -18,6 +18,7 @@ let package = Package(
         .package(url: "https://github.com/vapor/fluent-kit.git", from: "1.40.0"),
         .package(url: "https://github.com/vapor/fluent-mysql-driver.git", from: "4.0.0"),
         .package(url: "https://github.com/vapor/fluent-sqlite-driver.git", from: "4.0.0"),
+        .package(url: "https://github.com/vapor/console-kit.git", from: "4.0.0"),
         .package(url: "https://github.com/yaslab/ULID.swift.git", .upToNextMinor(from: "1.2.0")),
     ],
     targets: [
@@ -34,7 +35,10 @@ let package = Package(
         ),
         .executableTarget(
             name: "Migrator",
-            dependencies: ["StateDB"]
+            dependencies: [
+              "StateDB", 
+              .product(name: "ConsoleKit", package: "console-kit"),
+            ]
         ),
         .testTarget(
             name: "StateDBTests",
